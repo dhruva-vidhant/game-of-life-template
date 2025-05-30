@@ -31,10 +31,10 @@ public class GameOfLife implements Board {
         for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[0].length; j++) {
                 int num = countNeighbors(i,j);
-                if(get(i,j)==0) {
-                    if(num>3 || num<2) board[i][j]=1;
+                if(get(i,j)==1) {
+                    if(num>3 || num<2) board[i][j]=0;
                 } else {
-                    if(num == 3) board[i][j] = 0;
+                    if(num == 3) board[i][j] = 1;
                 }
             }
         }
@@ -43,9 +43,9 @@ public class GameOfLife implements Board {
 
     public int countNeighbors(int x, int y) {
         int count = 0;
-        for(int i = x-1; i<x+2; i+=2) {
-            for(int j = y-1; j < y+2; j+=2) {
-                if(get(i,j)==0) count++;
+        for(int i = x-1; i<x+2; i++) {
+            for(int j = y-1; j < y+2; j++) {
+                if(get(i,j)==1&&(i!=x||j!=y)) count++;
             }
         }
         return count;
