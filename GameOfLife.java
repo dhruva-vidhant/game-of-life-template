@@ -28,14 +28,19 @@ public class GameOfLife implements Board {
     public void step()
     {
         print();
-        // Update the game board, store a 1 if the cell is alive and a 0 otherwise.
+        /*for(int i = 0; i < board.length; i++) {
+            for(int j )
+        }*/
     }
 
 
     public int countNeighbors(int x, int y) {
         int count = 0;
-        // count the number of neighbors the cell has
-        // use the get(x,y) method to read any board state you need.
+        for(int i = x-1; i<x+2; i+=2) {
+            for(int j = y-1; j < y+2; j+=2) {
+                if(get(i,j)==0) count++;
+            }
+        }
         return count;
     }
 
